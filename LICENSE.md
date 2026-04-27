@@ -1,6 +1,6 @@
 # VIBEKIT-VN — Proprietary License
 
-Copyright (c) 2026 cuongunder. All rights reserved.
+Copyright (c) 2026 Cuongunder. All rights reserved.
 
 ## License grant
 
@@ -45,4 +45,4 @@ ARISING FROM USE OF THE SOFTWARE.
 ---
 
 For commercial / enterprise licensing (multi-team, on-prem mirror, custom SLA),
-contact via Telegram: @cuongunder.
+contact via Telegram: @tiensinhcc.

@@ -16,7 +16,7 @@ Mua key qua Telegram bot: **[@vibekitvn_bot](https://t.me/vibekitvn_bot)**
 |---|---|---|
 | Lifetime | 999K | Public default — 2 máy, free update 1.x |
 | Founding | 499K | 50 slot đầu — 2 máy, free update 1.x + 2.x lifetime |
-| Enterprise | Quote | Multi-team, on-prem mirror, SLA — liên hệ @cuongunder |
+| Enterprise | Quote | Multi-team, on-prem mirror, SLA — liên hệ @tiensinhcc |
 
 [Refund policy](#refund-policy): 7 ngày money-back nếu chưa activate.
 
@@ -25,9 +25,9 @@ Mua key qua Telegram bot: **[@vibekitvn_bot](https://t.me/vibekitvn_bot)**
 ### 1. Cài CLI
 
 ```bash
-npm install -g vibekit-vn
+npm install -g vibekitvn
 # hoặc dùng npx (không cần install)
-npx vibekit-vn --help
+npx vibekitvn --help
 ```
 
 ### 2. Activate license
@@ -111,4 +111,4 @@ Proprietary — see [LICENSE.md](./LICENSE.md). Mua qua [@vibekitvn_bot](https:/
 
 ---
 
-Made with ❤️ in Vietnam by @cuongunder.
+Made with ❤️ in Vietnam by Cuongunder ([@tiensinhcc](https://t.me/tiensinhcc)).

@@ -1,6 +1,6 @@
 {
-  "name": "vibekit-vn",
-  "version": "2.0.0",
+  "name": "vibekitvn",
+  "version": "2.0.2",
   "description": "Bộ skill AI tiếng Việt cho 23 AI IDE — license-only. Mua key qua https://t.me/vibekitvn_bot",
   "author": "cuongunder",
   "license": "SEE LICENSE IN LICENSE.md",
@@ -9,8 +9,8 @@
     "node": ">=20"
   },
   "bin": {
-    "vibekit-vn": "./bin/vibekitvn-cli.js",
-    "vibekitvn": "./bin/vibekitvn-cli.js"
+    "vibekit-vn": "bin/vibekitvn-cli.js",
+    "vibekitvn": "bin/vibekitvn-cli.js"
   },
   "files": [
     "bin/",
@@ -39,10 +39,10 @@
     "cursor",
     "windsurf"
   ],
-  "homepage": "https://github.com/cuongunder/vibekit-vn-cli",
+  "homepage": "https://github.com/cuong-under/vibekit-vn-cli",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cuongunder/vibekit-vn-cli.git"
+    "url": "git+https://github.com/cuong-under/vibekit-vn-cli.git"
   },
   "bugs": {
     "url": "https://t.me/vibekitvn_bot"
