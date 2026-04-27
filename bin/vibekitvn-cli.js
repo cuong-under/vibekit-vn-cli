@@ -2,13 +2,13 @@
 // bin/vibekitvn-cli.js — main CLI entry
 //
 // Usage:
-//   vibekit-vn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
-//   vibekit-vn install
-//   vibekit-vn status
-//   vibekit-vn deactivate
-//   vibekit-vn update
-//   vibekit-vn uninstall
-//   vibekit-vn buy
+//   vibekitvn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
+//   vibekitvn install
+//   vibekitvn status
+//   vibekitvn deactivate
+//   vibekitvn update
+//   vibekitvn uninstall
+//   vibekitvn buy
 
 import { Command } from 'commander';
 import { readFileSync } from 'node:fs';
@@ -20,7 +20,7 @@ const pkg = JSON.parse(readFileSync(path.join(__dirname, '..', 'package.json'), 
 
 const program = new Command();
 program
-  .name('vibekit-vn')
+  .name('vibekitvn')
   .description('VIBEKIT-VN — Bộ skill AI tiếng Việt (license-only). Mua key: https://t.me/vibekitvn_bot')
   .version(pkg.version);
 

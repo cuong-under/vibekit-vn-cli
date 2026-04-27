@@ -1,9 +1,9 @@
-# vibekit-vn
+# vibekitvn
 
 > 🇻🇳 Bộ skill AI tiếng Việt cho 23 AI IDE (Claude Code, Cursor, Windsurf, Gemini, …)
 
 ```bash
-npx vibekit-vn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
+npx vibekitvn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
 ```
 
 ## Mua license
@@ -33,7 +33,7 @@ npx vibekitvn --help
 ### 2. Activate license
 
 ```bash
-vibekit-vn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
+vibekitvn activate VBK-LIFETIME-XXXX-YYYY-ZZZZ
 ```
 
 CLI sẽ:
@@ -58,13 +58,13 @@ Mở project trong Cursor / Claude Code / Windsurf, gõ trong AI chat:
 
 | Lệnh | Mô tả |
 |---|---|
-| `vibekit-vn activate <KEY>` | Activate license + tải skill |
-| `vibekit-vn install` | Sync skill từ `_vibekitvn/` vào AI IDE (sau khi activate) |
-| `vibekit-vn uninstall` | Xóa skill khỏi project |
-| `vibekit-vn status` | Show license info + machine count |
-| `vibekit-vn deactivate` | Giải phóng slot máy hiện tại (cooldown 90 ngày) |
-| `vibekit-vn update` | Tải skill version mới nhất |
-| `vibekit-vn buy` | Mở Telegram bot để mua |
+| `vibekitvn activate <KEY>` | Activate license + tải skill |
+| `vibekitvn install` | Sync skill từ `_vibekitvn/` vào AI IDE (sau khi activate) |
+| `vibekitvn uninstall` | Xóa skill khỏi project |
+| `vibekitvn status` | Show license info + machine count |
+| `vibekitvn deactivate` | Giải phóng slot máy hiện tại (cooldown 90 ngày) |
+| `vibekitvn update` | Tải skill version mới nhất |
+| `vibekitvn buy` | Mở Telegram bot để mua |
 
 ## Skills bao gồm
 
