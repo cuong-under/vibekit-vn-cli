@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import { readLicense, writeLicense, deleteLicense } from '../lib/license-file.js';
+import { readLicense, writeLicense, deleteLicense, ensureGitignore } from '../lib/license-file.js';
 
 function tmp() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'vibekitvn-test-'));
@@ -52,4 +52,33 @@ test('deleteLicense removes local file', () => {
     process.chdir(original);
     fs.rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('ensureGitignore: skips when not a git repo', () => {
+  const dir = tmp();
+  const r = ensureGitignore(dir);
+  assert.equal(r.skipped, 'not_git_repo');
+  assert.equal(fs.existsSync(path.join(dir, '.gitignore')), false);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('ensureGitignore: appends entries to existing .gitignore', () => {
+  const dir = tmp();
+  const gi = path.join(dir, '.gitignore');
+  fs.writeFileSync(gi, 'node_modules/\n');
+  const r = ensureGitignore(dir);
+  assert.deepEqual(r.added.sort(), ['.vibekitvn-license', '_vibekitvn-output/', '_vibekitvn/'].sort());
+  const content = fs.readFileSync(gi, 'utf8');
+  assert.match(content, /\.vibekitvn-license/);
+  assert.match(content, /_vibekitvn\//);
+  assert.match(content, /_vibekitvn-output\//);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('ensureGitignore: idempotent — no duplicate entries', () => {
+  const dir = tmp();
+  fs.writeFileSync(path.join(dir, '.gitignore'), '.vibekitvn-license\n_vibekitvn/\n_vibekitvn-output/\n');
+  const r = ensureGitignore(dir);
+  assert.deepEqual(r.added, []);
+  fs.rmSync(dir, { recursive: true, force: true });
 });
