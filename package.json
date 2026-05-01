@@ -1,6 +1,6 @@
 {
   "name": "vibekitvn",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Bộ skill AI tiếng Việt cho 23 AI IDE — license-only. Mua key qua https://t.me/vibekitvn_bot",
   "author": "cuongunder",
   "license": "SEE LICENSE IN LICENSE.md",
@@ -19,8 +19,7 @@
     "LICENSE.md"
   ],
   "scripts": {
-    "test": "node --test test/*.test.js",
-    "lint": "echo 'TODO: add eslint'"
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "@clack/prompts": "^1.2.0",
