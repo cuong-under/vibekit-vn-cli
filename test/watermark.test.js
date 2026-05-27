@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import {
   applyWatermark,
   computeFileHmac,
@@ -67,7 +68,8 @@ test('applyWatermark: stamps every .md and skips non-md', () => {
       path.join(bundleRoot, 'skills', 'mod-a', 'skill-1', 'SKILL.md'),
       'utf8'
     );
-    assert.match(skill1, /<!-- vbk-wm: VBK-LIFETIME-1111-2222-3333 · [0-9a-f]{8} -->/);
+    assert.match(skill1, /<!-- vbk-wm: [0-9a-f]{16} · [0-9a-f]{8} -->/);
+    assert.doesNotMatch(skill1, new RegExp(key));
 
     // Non-md untouched
     const json = fs.readFileSync(
@@ -114,10 +116,10 @@ test('applyWatermark: re-watermark with new key replaces old marker', () => {
       path.join(bundleRoot, 'skills', 'mod-b', 'SKILL.md'),
       'utf8'
     );
-    // Only one watermark line, with the new key
+    // Only one watermark line, with the new fingerprint
     const matches = content.match(/<!-- vbk-wm: [^\n]*-->/g) || [];
     assert.equal(matches.length, 1);
-    assert.match(matches[0], /VBK-LIFETIME-DDDD-EEEE-FFFF/);
+    assert.match(matches[0], new RegExp(fingerprint('VBK-LIFETIME-DDDD-EEEE-FFFF')));
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }
@@ -132,7 +134,7 @@ test('applyWatermark: stamps manifest + writes .watermark.json', () => {
     const manifest = JSON.parse(
       fs.readFileSync(path.join(bundleRoot, 'manifest.json'), 'utf8')
     );
-    assert.equal(manifest.watermark.license_key, key);
+    assert.equal(manifest.watermark.license_fingerprint, fingerprint(key));
     assert.equal(manifest.watermark.machine_id, 'abc123def456');
     assert.equal(manifest.watermark.files_stamped, 3);
     assert.ok(manifest.watermark.applied_at);
@@ -140,7 +142,7 @@ test('applyWatermark: stamps manifest + writes .watermark.json', () => {
     const audit = JSON.parse(
       fs.readFileSync(path.join(bundleRoot, '.watermark.json'), 'utf8')
     );
-    assert.equal(audit.license_key, key);
+    assert.equal(audit.license_fingerprint, fingerprint(key));
     assert.equal(audit.files_total, 3);
     assert.match(audit.notice, /redistribution is prohibited/i);
   } finally {
@@ -156,12 +158,16 @@ test('readWatermarks: traces leaked bundle', () => {
 
     const traces = readWatermarks(bundleRoot);
     assert.equal(traces.length, 1);
-    assert.equal(traces[0].license_key, key);
+    assert.equal(traces[0].license_fingerprint, fingerprint(key));
     assert.equal(traces[0].count, 3);
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 });
+
+function fingerprint(key) {
+  return crypto.createHash('sha256').update(String(key)).digest('hex').slice(0, 16);
+}
 
 test('applyWatermark: throws when bundleRoot missing', () => {
   assert.throws(
