@@ -60,8 +60,8 @@ Mở project trong Cursor / Claude Code / Windsurf, gõ trong AI chat:
 
 | Lệnh | Mô tả |
 |---|---|
-| `vibekitvn activate <KEY>` | Activate license + tải skill |
-| `vibekitvn install` | Sync skill từ `_vibekitvn/` vào AI IDE (sau khi activate) |
+| `vibekitvn activate <KEY>` | Activate máy + tải skill vào cache người dùng |
+| `vibekitvn install` | Cài skill vào project hiện tại từ cache máy (dùng được nhiều project) |
 | `vibekitvn uninstall` | Xóa skill khỏi project |
 | `vibekitvn status` | Show license info + machine count |
 | `vibekitvn deactivate` | Giải phóng slot máy hiện tại (cooldown 90 ngày) |

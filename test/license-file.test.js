@@ -4,13 +4,26 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import { readLicense, writeLicense, deleteLicense, ensureGitignore } from '../lib/license-file.js';
+import { readLicense, writeLicense, deleteLicense, ensureGitignore, getLicensePaths } from '../lib/license-file.js';
 
 function tmp() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'vibekitvn-test-'));
 }
 
-test('writeLicense + readLicense roundtrip in cwd', () => {
+function withHome(fn) {
+  const home = tmp();
+  const oldHome = process.env.HOME;
+  process.env.HOME = home;
+  try {
+    return fn(home);
+  } finally {
+    if (oldHome == null) delete process.env.HOME;
+    else process.env.HOME = oldHome;
+    fs.rmSync(home, { recursive: true, force: true });
+  }
+}
+
+test('writeLicense + readLicense roundtrip in machine home', () => withHome(() => {
   const dir = tmp();
   const data = {
     license_key: 'VBK-LIFETIME-AAAA-BBBB-CCCC',
@@ -19,40 +32,40 @@ test('writeLicense + readLicense roundtrip in cwd', () => {
     version: '1.0.0',
   };
   const wrote = writeLicense(data, dir);
-  assert.equal(wrote.location, 'local');
+  assert.equal(wrote.location, 'home');
+  assert.equal(wrote.path, getLicensePaths(dir).homeFile);
   const read = readLicense(dir);
   assert.equal(read.license_key, data.license_key);
   assert.equal(read.machine_id, data.machine_id);
-  assert.equal(read.source, 'local');
+  assert.equal(read.source, 'home');
   fs.rmSync(dir, { recursive: true, force: true });
-});
+}));
 
-test('readLicense returns null when no file', () => {
+test('readLicense returns null when no file', () => withHome(() => {
   const dir = tmp();
-  // Note: this might find a HOME license; that's fine, test focuses on local-only
-  // by checking file does not exist.
-  const local = path.join(dir, '.vibekitvn-license');
-  assert.equal(fs.existsSync(local), false);
+  assert.equal(readLicense(dir), null);
   fs.rmSync(dir, { recursive: true, force: true });
-});
+}));
 
-test('deleteLicense removes local file', () => {
+test('deleteLicense removes machine-home and local legacy files', () => withHome(() => {
   const dir = tmp();
   writeLicense(
     { license_key: 'VBK-LIFETIME-AAAA-BBBB-CCCC', machine_id: 'x', activated_at: 'y' },
     dir
   );
+  fs.writeFileSync(path.join(dir, '.vibekitvn-license'), '{}');
   // Save current cwd, switch, run delete, restore
   const original = process.cwd();
   try {
     process.chdir(dir);
     deleteLicense();
+    assert.equal(fs.existsSync(getLicensePaths(dir).homeFile), false);
     assert.equal(fs.existsSync(path.join(dir, '.vibekitvn-license')), false);
   } finally {
     process.chdir(original);
     fs.rmSync(dir, { recursive: true, force: true });
   }
-});
+}));
 
 test('ensureGitignore: skips when not a git repo', () => {
   const dir = tmp();
