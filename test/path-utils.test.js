@@ -24,6 +24,10 @@ test('resolveProjectPath keeps absolute Windows paths even on POSIX', () => {
 test('toProjectRelativePath strips duplicated project root across Windows slash styles', () => {
   assert.equal(toProjectRelativePath('D:\\1212', 'D:\\1212\\_vibekitvn-output'), '_vibekitvn-output');
   assert.equal(toProjectRelativePath('D:\\1212', 'D:/1212/_vibekitvn-output'), '_vibekitvn-output');
+  assert.equal(
+    toProjectRelativePath('D:\\1212', 'D:\\1212\\_vibekitvn-output\\planning-artifacts'),
+    '_vibekitvn-output\\planning-artifacts'
+  );
   assert.equal(toProjectRelativePath('/mnt/d/1212', '/mnt/d/1212/_vibekitvn-output'), '_vibekitvn-output');
   assert.equal(toProjectRelativePath('/mnt/d/1212', '_vibekitvn-output'), '_vibekitvn-output');
 });
