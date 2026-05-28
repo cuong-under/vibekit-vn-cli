@@ -100,7 +100,7 @@ program
   .command('tro-giup')
   .alias('tro-gio')
   .alias('help')
-  .description('Hiện bảng lệnh VIBEKIT-VN + hỏi tạo note lệnh trong project')
+  .description('Hiện lệnh gọi skill @vibekit-* + hỏi tạo note trong project')
   .option('-d, --directory <dir>', 'Project directory (default: cwd)')
   .option('-y, --yes', 'Tạo note luôn, không hỏi')
   .action(async (opts) => {

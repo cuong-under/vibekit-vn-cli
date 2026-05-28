@@ -67,7 +67,7 @@ Mở project trong Cursor / Claude Code / Windsurf, gõ trong AI chat:
 | `vibekitvn deactivate` | Giải phóng slot máy hiện tại (cooldown 90 ngày) |
 | `vibekitvn update` | Tải skill version mới nhất |
 | `vibekitvn buy` | Mở Telegram bot để mua |
-| `vibekitvn tro-giup` | Hiện bảng lệnh + tạo note command trong project |
+| `vibekitvn tro-giup` | Hiện lệnh gọi skill `@vibekit-*` + tạo note trong project |
 
 ## Skills bao gồm
 
