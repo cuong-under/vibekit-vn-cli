@@ -9,6 +9,7 @@
 //   vibekitvn update
 //   vibekitvn uninstall
 //   vibekitvn buy
+//   vibekitvn tro-giup
 
 import { Command } from 'commander';
 import { readFileSync } from 'node:fs';
@@ -93,6 +94,18 @@ program
   .action(async () => {
     const { buyCommand } = await import('../lib/commands/misc.js');
     await buyCommand();
+  });
+
+program
+  .command('tro-giup')
+  .alias('tro-gio')
+  .alias('help')
+  .description('Hiện bảng lệnh VIBEKIT-VN + hỏi tạo note lệnh trong project')
+  .option('-d, --directory <dir>', 'Project directory (default: cwd)')
+  .option('-y, --yes', 'Tạo note luôn, không hỏi')
+  .action(async (opts) => {
+    const { helpNoteCommand } = await import('../lib/commands/help-note.js');
+    await helpNoteCommand(opts);
   });
 
 program.parseAsync(process.argv).catch((err) => {
