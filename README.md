@@ -65,7 +65,7 @@ Mở project trong Cursor / Claude Code / Windsurf, gõ trong AI chat:
 | `vibekitvn uninstall` | Xóa skill khỏi project |
 | `vibekitvn status` | Show license info + machine count |
 | `vibekitvn deactivate` | Giải phóng slot máy hiện tại (cooldown 90 ngày) |
-| `vibekitvn update` | Tải skill version mới nhất |
+| `vibekitvn update` | Kiểm tra/tải skill content mới nhất (khác với CLI version npm) |
 | `vibekitvn buy` | Mở Telegram bot để mua |
 | `vibekitvn tro-giup` | Hiện lệnh gọi skill `@vibekit-*` + tạo note trong project |
 
