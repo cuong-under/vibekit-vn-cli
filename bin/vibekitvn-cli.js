@@ -36,7 +36,7 @@ program
 
 program
   .command('install')
-  .description('Cài skill vào AI IDE folders (interactive picker 23 IDE; cần activate trước)')
+  .description('Cài skill vào AI IDE folders (interactive picker 21 IDE; cần activate trước)')
   .option('-d, --directory <dir>', 'Project directory (default: cwd)')
   .option('-y, --yes', 'Headless: dùng defaults, không hỏi')
   .option('--tools <ids>', 'Comma-separated tool ids, hoặc all|preferred|none')

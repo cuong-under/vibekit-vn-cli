@@ -1,12 +1,12 @@
 # vibekitvn
 
-> Bộ skill AI tiếng Việt cho 23 AI IDE (Claude Code, Cursor, Windsurf, Gemini, Kilo, Roo, Cline, Codex, ...)
+> Bộ skill AI tiếng Việt cho 21 AI IDE (Claude Code, Cursor, Windsurf, Gemini, Kilo, Roo, Cline, Codex, ...)
 
 ```bash
 npx vibekitvn activate VBK-COMBO-XXXX-YYYY-ZZZZ
 ```
 
-`vibekitvn@2.1.10` · Node >=20 · ESM. CLI này **không chứa nội dung skill** — nó activate license, tải tarball skill đã ký (signed) về cache, watermark, rồi copy skill vào thư mục IDE.
+`vibekitvn@2.1.11` · Node >=20 · ESM. CLI này **không chứa nội dung skill** — nó activate license, tải tarball skill đã ký (signed) về cache, watermark, rồi copy skill vào thư mục IDE.
 
 ## Mua license
 
@@ -84,9 +84,9 @@ Mở project trong Cursor / Claude Code / Windsurf / Kilo..., gõ trong AI chat:
 - **Implementation (20):** phát triển story, đánh giá mã nguồn, gỡ rối, triển khai lên mạng, tích hợp database/auth/AI, ...
 - **Marketing (4):** video UGC, video marketing, infographic, pitch deck
 
-## AI IDE supported (23)
+## AI IDE supported (21 skill-folder)
 
-Claude Code, Cursor, Windsurf, Gemini, GitHub Copilot, Kilo, Roo, Cline, Codex, Junie, Trae, Qwen, iFlow, Antigravity, Auggie, CodeBuddy, Crush, Kiro, Ona, OpenCode, Pi, Qoder, Rovo Dev.
+Claude Code, Cursor, Windsurf, Gemini, Kilo, Roo, Cline, Codex, Trae, Qwen, iFlow, Antigravity, Auggie, CodeBuddy, Crush, Kiro, Ona, OpenCode, Pi, Qoder, Rovo Dev.
 
 > Danh sách & target_dir đầy đủ nằm trong `platforms.yaml` **bên trong tarball tải về** (`~/.vibekitvn/bundle/platforms.yaml`), không nằm trong package npm này.
 

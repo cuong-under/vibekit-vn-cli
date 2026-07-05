@@ -4,7 +4,7 @@
 
 ## Vai trò
 
-CLI public trên npm, `vibekitvn@2.1.10`, Node 20 ESM. **Loader/installer thuần** — KHÔNG chứa nội dung skill. Nhiệm vụ: activate license → tải tarball signed → verify sha256 → watermark → copy skill vào IDE. Deps (5): `@clack/prompts`, `commander`, `js-yaml`, `picocolors`, `tar`.
+CLI public trên npm, `vibekitvn@2.1.11`, Node 20 ESM. **Loader/installer thuần** — KHÔNG chứa nội dung skill. Nhiệm vụ: activate license → tải tarball signed → verify sha256 → watermark → copy skill vào IDE. Deps (5): `@clack/prompts`, `commander`, `js-yaml`, `picocolors`, `tar`.
 
 ## Layout
 
